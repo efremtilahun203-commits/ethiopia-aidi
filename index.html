@@ -3,15 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>እንኳን ደህና መጡ</title>
+    <title>የኢትዮጵያ ሎተሪ — የቀጥታ ስሪት</title>
     <style>
-        body { font-family: sans-serif; text-align: center; background-color: #f0f2f5; padding: 50px; }
-        h1 { color: #0070f3; }
-        p { color: #333; font-size: 18px; }
+        body { font-family: sans-serif; background-color: #f4f6f9; padding: 20px; text-align: center; }
+        .container { max-width: 600px; background: white; margin: 0 auto; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h1 { color: #2c3e50; }
+        .section { background: #fdfefe; border: 1px solid #e2e8f0; padding: 15px; margin: 15px 0; border-radius: 8px; text-align: left; }
+        button { background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; width: 100%; }
+        button:hover { background: #219653; }
+        input, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #cbd5e1; border-radius: 5px; box-sizing: border-box; }
+        .admin-box { background: #f8fafc; border: 2px dashed #94a3b8; padding: 20px; margin-top: 30px; border-radius: 10px; }
+        .secret-content { display: none; }
     </style>
 </head>
 <body>
-    <h1>እንኳን ደህና መጡ!</h1>
-    <p>ይህ በGitHub እና Netlify ላይ የተጫነ የመጀመሪያው ድረ-ገጽ ነው።</p>
+
+<div class="container">
+    <h1>🎱 የኢትዮጵያ ሎተሪ</h1>
+    
+    <div class="section">
+        <h2>🎯 ዋና ዕጣ፡ 75,000,000 ብር</h2>
+        <p>የአንድ ትኬት ዋጋ፡ 2,500 ብር</p>
+    </div>
+
+    <div class="section">
+        <h2>📱 ቴሌብር ክፍያ መረጃ</h2>
+        <p>ስልክ ቁጥር፦ <b>+251941453113</b></p>
+        <p>እባክዎ ክፍያ ሲፈጽሙ ደረሰኙን ስክሪንሾት በማድረግ ከታች ባለው መመዝገቢያ ያስገቡ።</p>
+    </div>
+
+    <div class="section">
+        <h2>🧾 የክፍያ እና የቲኬት ማመልከቻ</h2>
+        <input type="text" id="custName" placeholder="ሙሉ ስም">
+        <input type="text" id="custPhone" placeholder="ስልክ ቁጥር">
+        <input type="text" id="custRef" placeholder="የቴሌብር ማጣቀሻ ቁጥር (Ref No.)">
+        <button onclick="submitPayment()">የክፍያ መረጃ አስገባ</button>
+    </div>
+
+    <!-- የአስተዳዳሪ ክፍል (በፓስወርድ የተቆለፈ) -->
+    <div class="admin-box">
+        <h2>🛠 የአስተዳዳሪ ዳሽቦርድ (Admin)</h2>
+        
+        <!-- መግቢያ ፎርም -->
+        <div id="loginForm">
+            <p>ወደ ማስተዳደሪያው ገጽ ለመግባት የምስጢር ቁጥር ያስገቡ፦</p>
+            <input type="password" id="adminPassword" placeholder="የይለፍ ቃል ያስገቡ">
+            <button style="background:#34495e;" onclick="checkPassword()">ግባ (Login)</button>
+            <p id="loginError" style="color:red; display:none;">የተሳሳተ የይለፍ ቃል ነው!</p>
+        </div>
+
+        <!-- ዋናው ማስተዳደሪያ (ፓስወርድ ሲገባ ብቻ የሚከፈት) -->
+        <div id="adminContent" class="secret-content">
+            <p style="color:green; font-weight:bold;">🔓 እንኳን ደህና መጡ! ዳሽቦርዱ ክፍት ነው</p>
+            <hr>
+            <h3>🎲 እጣ አውጣ</h3>
+            <button style="background:#e67e22;" onclick="drawLottery()">ከተመዘገቡት ውስጥ ዕጣ አውጣ</button>
+            <h3 id="winnerResult" style="color:#27ae60; font-size:24px; text-align:center; margin-top:15px;"></h3>
+        </div>
+    </div>
+</div>
+
+<script>
+    // መረጃዎችን ለጊዜው በስልኩ ላይ ለማስቀመጥ
+    let players = JSON.parse(localStorage.getItem('lottery_players')) || [];
+
+    function submitPayment() {
+        const name = document.getElementById('custName').value;
+        const phone = document.getElementById('custPhone').value;
+        const ref = document.getElementById('custRef').value;
+        
+        if(!name || !phone || !ref) {
+            alert('እባክዎ ሁሉንም መረጃዎች በትክክል ይሙሉ!');
+            return;
+        }
+        
+        players.push({name: name, phone: phone, ref: ref});
+        localStorage.setItem('lottery_players', JSON.stringify(players));
+        alert('የክፍያ መረጃዎ በተሳካ ሁኔታ ተልኳል! አስተዳዳሪው ሲያረጋግጥ የቲኬት ቁጥር ይላክለታል።');
+        
+        document.getElementById('custName').value = '';
+        document.getElementById('custPhone').value = '';
+        document.getElementById('custRef').value = '';
+    }
+
+    // የይለፍ ቃል ማረጋገጫ ተግባር
+    function checkPassword() {
+        const passInput = document.getElementById('adminPassword').value;
+        const correctPass = "0954385818"; // የእርስዎ ምስጢር ቁጥር
+        
+        if (passInput === correctPass) {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('adminContent').style.display = 'block';
+        } else {
+            document.getElementById('loginError').style.display = 'block';
+        }
+    }
+
+    function drawLottery() {
+        if (players.length === 0) {
+            alert('እባክዎ መጀመሪያ ተጫዋቾችን ይመዝግቡ (ወይም የክፍያ መረጃ ያስገቡ)!');
+            return;
+        }
+        const randomIndex = Math.floor(Math.random() * players.length);
+        const winner = players[randomIndex];
+        document.getElementById('winnerResult').innerHTML = `🏆 አሸናፊው ተወዳዳሪ፦ <br> ${winner.name} (${winner.phone})`;
+    }
+</script>
+
 </body>
 </html>
