@@ -3,112 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>የኢትዮጵያ ሎተሪ — የቀጥታ ስሪት</title>
+    <title>ኢትዮጵያ ዲቢኢ - የገና ልዩ ሎተሪ</title>
     <style>
-        body { font-family: sans-serif; background-color: #f4f6f9; padding: 20px; text-align: center; }
-        .container { max-width: 600px; background: white; margin: 0 auto; padding: 20px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        h1 { color: #2c3e50; }
-        .section { background: #fdfefe; border: 1px solid #e2e8f0; padding: 15px; margin: 15px 0; border-radius: 8px; text-align: left; }
-        button { background: #27ae60; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; width: 100%; }
-        button:hover { background: #219653; }
-        input, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #cbd5e1; border-radius: 5px; box-sizing: border-box; }
-        .admin-box { background: #f8fafc; border: 2px dashed #94a3b8; padding: 20px; margin-top: 30px; border-radius: 10px; }
-        .secret-content { display: none; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            background-color: #1b5e20;
+            color: white;
+            padding: 25px;
+            font-size: 26px;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .hero-text {
+            font-size: 20px;
+            color: #2e7d32;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .prize-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #fffde7;
+            border: 2px solid #fbc02d;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .prize-table th, .prize-table td {
+            padding: 12px;
+            border: 1px solid #fbc02d;
+            text-align: left;
+        }
+        .prize-table th {
+            background-color: #fbc02d;
+            color: #333;
+        }
+        .prize-rank {
+            font-weight: bold;
+            color: #c62828;
+        }
+        .prize-amount {
+            font-weight: bold;
+            color: #1b5e20;
+            text-align: right;
+        }
+        .countdown {
+            font-size: 18px;
+            color: #d32f2f;
+            font-weight: bold;
+            margin: 15px 0;
+            background-color: #ffebee;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        .bank-info {
+            background-color: #e8f5e9;
+            border-left: 5px solid #2e7d32;
+            padding: 15px;
+            text-align: left;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .bank-title {
+            font-weight: bold;
+            color: #2e7d32;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+        .form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #c62828;
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        button:hover {
+            background-color: #b71c1c;
+        }
+        .ticket-result {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e3f2fd;
+            border: 2px solid #2196f3;
+            border-radius: 8px;
+        }
+        .ticket-number {
+            font-size: 38px;
+            color: #0d47a1;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin: 10px 0;
+            background: white;
+            padding: 10px;
+            border-radius: 6px;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>🎱 የኢትዮጵያ ሎተሪ</h1>
-    
-    <div class="section">
-        <h2>🎯 ዋና ዕጣ፡ 75,000,000 ብር</h2>
-        <p>የአንድ ትኬት ዋጋ፡ 2,500 ብር</p>
-    </div>
+    <header>
+        ኢትዮጵያ ዲቢኢ (Ethiopia Dibiei)
+    </header>
 
-    <div class="section">
-        <h2>📱 ቴሌብር ክፍያ መረጃ</h2>
-        <p>ስልክ ቁጥር፦ <b>+251941453113</b></p>
-        <p>እባክዎ ክፍያ ሲፈጽሙ ደረሰኙን ስክሪንሾት በማድረግ ከታች ባለው መመዝገቢያ ያስገቡ።</p>
-    </div>
-
-    <div class="section">
-        <h2>🧾 የክፍያ እና የቲኬት ማመልከቻ</h2>
-        <input type="text" id="custName" placeholder="ሙሉ ስም">
-        <input type="text" id="custPhone" placeholder="ስልክ ቁጥር">
-        <input type="text" id="custRef" placeholder="የቴሌብር ማጣቀሻ ቁጥር (Ref No.)">
-        <button onclick="submitPayment()">የክፍያ መረጃ አስገባ</button>
-    </div>
-
-    <!-- የአስተዳዳሪ ክፍል (በፓስወርድ የተቆለፈ) -->
-    <div class="admin-box">
-        <h2>🛠 የአስተዳዳሪ ዳሽቦርድ (Admin)</h2>
+    <div class="container">
+        <div class="hero-text">🎄 የታላቁ የገና ሎተሪ እጣ 🎄<br>እድልዎን ይሞክሩ፣ ይሸለሙ!</div>
         
-        <!-- መግቢያ ፎርም -->
-        <div id="loginForm">
-            <p>ወደ ማስተዳደሪያው ገጽ ለመግባት የምስጢር ቁጥር ያስገቡ፦</p>
-            <input type="password" id="adminPassword" placeholder="የይለፍ ቃል ያስገቡ">
-            <button style="background:#34495e;" onclick="checkPassword()">ግባ (Login)</button>
-            <p id="loginError" style="color:red; display:none;">የተሳሳተ የይለፍ ቃል ነው!</p>
+        <!-- የሽልማት ሰንጠረዥ -->
+        <table class="prize-table">
+            <thead>
+                <tr>
+                    <th>የእጣ ደረጃ</th>
+                    <th style="text-align: right;">የሽልማት መጠን</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="prize-rank">1ኛ እጣ</td>
+                    <td class="prize-amount">75,000,000 ብር</td>
+                </tr>
+                <tr>
+                    <td class="prize-rank">2ኛ እጣ</td>
+                    <td class="prize-amount">50,000,000 ብር</td>
+                </tr>
+                <tr>
+                    <td class="prize-rank">3ኛ እጣ</td>
+                    <td class="prize-amount">25,000,000 ብር</td>
+                </tr>
+                <tr>
+                    <td class="prize-rank">4ኛ እጣ</td>
+                    <td class="prize-amount">15,000,000 ብር</td>
+                </tr>
+                <tr>
+                    <td class="prize-rank">5ኛ እጣ</td>
+                    <td class="prize-amount">5,000,000 ብር</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="countdown">
+            የእጣ ማውጫ ቀን፦ ታህሳስ 28 ቀን 2019 ዓ.ም
         </div>
 
-        <!-- ዋናው ማስተዳደሪያ (ፓስወርድ ሲገባ ብቻ የሚከፈት) -->
-        <div id="adminContent" class="secret-content">
-            <p style="color:green; font-weight:bold;">🔓 እንኳን ደህና መጡ! ዳሽቦርዱ ክፍት ነው</p>
-            <hr>
-            <h3>🎲 እጣ አውጣ</h3>
-            <button style="background:#e67e22;" onclick="drawLottery()">ከተመዘገቡት ውስጥ ዕጣ አውጣ</button>
-            <h3 id="winnerResult" style="color:#27ae60; font-size:24px; text-align:center; margin-top:15px;"></h3>
+        <hr>
+
+        <!-- የባንክ አካውንት መረጃ -->
+        <div class="bank-info">
+            <div class="bank-title">💰 የክፍያ መመሪያ፦</div>
+            <p style="margin: 5px 0;">እባክዎ ለትኬት መቁረጫ <strong>4,500 ብር</strong> በሚከተለው የንግድ ባንክ አካውንት ገቢ ያድርጉ፦</p>
+            <p style="margin: 5px 0;"><strong>የባንክ ስም፡</strong> የኢትዮጵያ ንግድ ባንክ (CBE)</p>
+            <p style="margin: 5px 0;"><strong>የአካውንት ስም፡</strong> Efrem tilahun</p>
+            <p style="margin: 5px 0;"><strong>የአካውንት ቁጥር፡</strong> 1000614721627</p>
+        </div>
+
+        <!-- የትኬት መቀበያ ፎርም -->
+        <h3>ክፍያዎን አረጋግጠው ትኬት ይውሰዱ</h3>
+        
+        <form id="ticketForm" name="lottery-tickets" method="POST" data-netlify="true" onsubmit="generateTicket(event)">
+            <div class="form-group">
+                <label for="fullName">ሙሉ ስም፦</label>
+                <input type="text" id="fullName" name="name" placeholder="የእርስዎን ሙሉ ስም ያስገቡ" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">የስልክ ቁጥር፦</label>
+                <input type="tel" id="phoneNumber" name="phone" placeholder="09xxxxxxxx" required>
+            </div>
+            <div class="form-group">
+                <label for="transactionId">የባንክ ትራንዛክሽን ቁጥር (Transaction ID)፦</label>
+                <input type="text" id="transactionId" name="txid" placeholder="ለምሳሌ፦ FT24XXXXXXXX" required>
+            </div>
+            <button type="submit">ትኬት ቁጥር አውጣ</button>
+        </form>
+
+        <!-- የትኬት ውጤት ማሳያ -->
+        <div id="ticketResult" class="ticket-result">
+            <h3 style="color: #2e7d32; margin: 0;">🎉 እንኳን ደስ አለዎት! ትኬትዎ ተዘጋጅቷል</h3>
+            <p>ይህንን የትኬት ቁጥር ስክሪንሹት (Screenshot) አድርገው ያስቀምጡ።</p>
+            <div class="ticket-number" id="displayTicketNumber">---</div>
+            <p><strong>ለባለቤቱ፦</strong> <span id="displayName"></span></p>
+            <p><strong>ስልክ፦</strong> <span id="displayPhone"></span></p>
+            <p style="font-size: 13px; color: #d32f2f; font-weight: bold;">⚠️ ማሳሰቢያ፦ የከፈሉበት ትራንዛክሽን ቁጥር በባንክ ከተረጋገጠ በኋላ እጣው በስራ ላይ ይውላል።</p>
         </div>
     </div>
-</div>
 
-<script>
-    // መረጃዎችን ለጊዜው በስልኩ ላይ ለማስቀመጥ
-    let players = JSON.parse(localStorage.getItem('lottery_players')) || [];
+    <script>
+        function generateTicket(event) {
+            event.preventDefault();
 
-    function submitPayment() {
-        const name = document.getElementById('custName').value;
-        const phone = document.getElementById('custPhone').value;
-        const ref = document.getElementById('custRef').value;
-        
-        if(!name || !phone || !ref) {
-            alert('እባክዎ ሁሉንም መረጃዎች በትክክል ይሙሉ!');
-            return;
+            const name = document.getElementById('fullName').value;
+            const phone = document.getElementById('phoneNumber').value;
+            const txid = document.getElementById('transactionId').value;
+            
+            const randomNumber = Math.floor(100000 + Math.random() * 900000);
+            const ticketCode = "XMAS-" + randomNumber;
+
+            const form = document.getElementById('ticketForm');
+            const formData = new FormData(form);
+            formData.append('ticket_number', ticketCode);
+
+            fetch('/', {
+                method: 'POST',
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => console.log('መረጃው በተሳካ ሁኔታ ተልኳል!'))
+            .catch((error) => console.error(error));
+
+            document.getElementById('displayName').innerText = name;
+            document.getElementById('displayPhone').innerText = phone;
+            document.getElementById('displayTicketNumber').innerText = ticketCode;
+            
+            document.getElementById('ticketResult').style.display = 'block';
+            document.getElementById('ticketForm').reset();
+            document.getElementById('ticketResult').scrollIntoView({ behavior: 'smooth' });
         }
-        
-        players.push({name: name, phone: phone, ref: ref});
-        localStorage.setItem('lottery_players', JSON.stringify(players));
-        alert('የክፍያ መረጃዎ በተሳካ ሁኔታ ተልኳል! አስተዳዳሪው ሲያረጋግጥ የቲኬት ቁጥር ይላክለታል።');
-        
-        document.getElementById('custName').value = '';
-        document.getElementById('custPhone').value = '';
-        document.getElementById('custRef').value = '';
-    }
-
-    // የይለፍ ቃል ማረጋገጫ ተግባር
-    function checkPassword() {
-        const passInput = document.getElementById('adminPassword').value;
-        const correctPass = "0954385818"; // የእርስዎ ምስጢር ቁጥር
-        
-        if (passInput === correctPass) {
-            document.getElementById('loginForm').style.display = 'none';
-            document.getElementById('adminContent').style.display = 'block';
-        } else {
-            document.getElementById('loginError').style.display = 'block';
-        }
-    }
-
-    function drawLottery() {
-        if (players.length === 0) {
-            alert('እባክዎ መጀመሪያ ተጫዋቾችን ይመዝግቡ (ወይም የክፍያ መረጃ ያስገቡ)!');
-            return;
-        }
-        const randomIndex = Math.floor(Math.random() * players.length);
-        const winner = players[randomIndex];
-        document.getElementById('winnerResult').innerHTML = `🏆 አሸናፊው ተወዳዳሪ፦ <br> ${winner.name} (${winner.phone})`;
-    }
-</script>
-
+    </script>
 </body>
 </html>
